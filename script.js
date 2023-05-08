@@ -17,12 +17,12 @@ function onReady() {
     // - Rendered to the DOM
     render();
 }
-
+//status
 let fungusHP = 100;
 let AP = 100;
 
 
-
+//function to render changes to the DOM.
 function render() {
 
         $('.ap-text').text(`${AP} AP `);
@@ -32,11 +32,12 @@ function render() {
         negativeCheck();
         fungusDeadCheck();
         humanDeadCheck();
+        updateProgress();
         fungus50hp();
 
 
 }
-
+//function to check the attck type and update the status
 function attack() {
 
     if (fungusHP !== 0) {
@@ -67,7 +68,7 @@ function attack() {
     }
     render();
 }
-
+// function to check if numbers are negative end set them to 0.
 function negativeCheck(){
     
     if (fungusHP <= 0){
@@ -77,7 +78,7 @@ function negativeCheck(){
         AP = 0 ;
     }
 }
-
+//function to check fungus HP and update fungus class is dead.
 function fungusDeadCheck() {
 
     if (fungusHP === 0) {
@@ -91,6 +92,7 @@ function fungusDeadCheck() {
         `);
     }
 }
+//function to check if AP is 0 and update button status and fungus class.
 function humanDeadCheck() {
 
     if (AP === 0) {
@@ -115,6 +117,11 @@ function humanDeadCheck() {
     }
 }
 
+function updateProgress() {
+
+        $('#ap-meter').val(`${AP}`);
+        $('#hp-meter').val(`${fungusHP}`);
+}
 // function fungus50hp() {
 
 //     if ( fungusHP <= 50 ) {
