@@ -20,6 +20,7 @@ function onReady() {
 //status
 let fungusHP = 100;
 let AP = 100;
+setInterval(fungusRegen, 1000);
 
 
 //function to render changes to the DOM.
@@ -33,7 +34,7 @@ function render() {
         fungusDeadCheck();
         humanDeadCheck();
         updateProgress();
-        fungus50hp();
+        // fungus50hp();
 
 
 }
@@ -122,12 +123,11 @@ function updateProgress() {
         $('#ap-meter').val(`${AP}`);
         $('#hp-meter').val(`${fungusHP}`);
 }
-// function fungus50hp() {
 
-//     if ( fungusHP <= 50 ) {
+function fungusRegen() {
 
-
-//     }
-
-
-// }
+    if (fungusHP < 50 && fungusHP !== 0) {
+        fungusHP += 1;
+    }
+    render();
+}
